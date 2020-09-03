@@ -6,7 +6,7 @@ Inspired by [Model Cards for Model Reporting (Mitchell et al.)](https://arxiv.or
 
 ## Model Details
 
-This model was developed by researchers at OpenAI to help us understand how large language models can be trained with human feedback, to optimize an objective that is better aligned with the goals of the task they are given. We focus on the task of abstractive summarization of English text. This model card details the 1.3 billion parameter Transformer model trained with human feedback (henceforth ‘the model’), as we are releasing both the weights and the evaluation code for this model. To train the model we use data collected primarily from external contractors.<a name="fn1">[1]</a>
+This model was developed by researchers at OpenAI to help us understand how large language models can be trained with human feedback, to optimize an objective that is better aligned with the goals of the task they are given. We focus on the task of abstractive summarization of English text. This model card details the 1.3 billion parameter Transformer model trained with human feedback (henceforth ‘the model’), as we are releasing both the weights and the evaluation code for this model. To train the model we use data collected primarily from external contractors.<sup>[[1]](#fn1)</sup>
  
 ### Model date
 July 2020
@@ -69,7 +69,8 @@ The behaviors and biases of this model, like any model trained with human feedba
 ### Where to send questions or comments about the model 
 While we do not have the capacity to respond to individual emails, we are interested in gathering feedback, especially relating to concerns about the methods we used and about model bias. The best way to provide feedback is to raise an issue on our GitHub repository.
 
-<sup>[[1]](#fn1)</sup> More information about the contractors we worked with, including the names of those who wished to be acknowledged can be found in the paper. See also the Method Recommendations section.
+-------
+ <a name="fn1">[1]</a> More information about the contractors we worked with, including the names of those who wished to be acknowledged can be found in the paper. See also the Method Recommendations section.
 
 
 
