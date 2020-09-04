@@ -18,8 +18,7 @@ Language model trained for abstractive summarization.
 The 1.3 billion parameter model trained with human feedback. Many of the details here also apply to the 6.7 billion parameter model, whose weights we are not releasing at this time. 
 
 ### Paper or other resource for more information
-Blog post: [link]
-Paper: [link]
+[Blog post](openai.com/blog/learning-to-summarize-with-human-feedback) and [paper](https://arxiv.org/abs/2009.01325).
 
 ## Intended Use
 
