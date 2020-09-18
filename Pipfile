@@ -7,7 +7,7 @@ verify_ssl = true
 pytest = ">=5.2.2,==5.*"
 
 [packages]
-blobfile = "~=0.16"
+blobfile = ">=0.17.2,==0.*"
 cloudpickle = "==1.2.2"
 dataclasses = "~=0.6"
 filelock = ">=3.0.10,==3.*"
