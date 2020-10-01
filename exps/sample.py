@@ -29,10 +29,10 @@ def experiment_definitions():
 
     test = combos(
         bind_nested("task", utils.test_task),
-        bind_nested("model_spec", utils.random_teeny_model_spec(n_shards=2)),
-        bind_nested("orig_model_spec", utils.random_teeny_model_spec(n_shards=2)),
+        bind_nested("model_spec", utils.random_teeny_model_spec()),
+        bind_nested("orig_model_spec", utils.random_teeny_model_spec()),
         bind("query_dataset_split", "train"),
-        bind("mpi", 2),
+        bind("mpi", 1),
         bind("num_queries", 8),
         bind("responses_per_query", 2),
         bind("responses_per_query_per_batch", 1),

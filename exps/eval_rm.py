@@ -18,13 +18,13 @@ def experiment_definitions():
 
     test = combos(
         bind_nested("task", utils.test_task),
-        bind_nested("reward_model_spec", utils.random_teeny_model_spec(n_shards=2)),
-        bind("mpi", 4),
+        bind_nested("reward_model_spec", utils.random_teeny_model_spec()),
+        bind("mpi", 1),
         bind("input_path", "https://openaipublic.blob.core.windows.net/summarize-from-feedback/samples/test"),
     )
     test_cpu = combos(
         test,
-        bind_nested("reward_model_spec", utils.stub_model_spec(n_shards=2)),
+        bind_nested("reward_model_spec", utils.stub_model_spec()),
     )
     tldrtest = combos(
         bind_nested("task", utils.test_tldr_task),
