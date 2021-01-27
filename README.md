@@ -116,3 +116,7 @@ The training data for `sup4` is found in `comparisons/batch3.json` through `comp
   "batch": "cnndm1"
 }
 ```
+
+# Reddit TL;DR dataset
+
+`https://openaipublic.blob.core.windows.net/summarize-from-feedback/datasets/tldr_3_filtered` and `https://openaipublic.blob.core.windows.net/summarize-from-feedback/datasets/tldr_3_filtered_queries` host our filtered versions of the [TL;DR dataset](https://zenodo.org/record/1168855) by Syed, Shahbaz, Voelske, Michael, Potthast, Martin, & Stein, Benno (2018). It is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/legalcode).

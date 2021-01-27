@@ -19,3 +19,9 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTH
 BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
 OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+Note: this license applies to the code in this repository and the feedback dataset at
+https://openaipublic.blob.core.windows.net/summarize-from-feedback/dataset/. It does not apply to
+our processed version of the Reddit TL;DR dataset; see https://zenodo.org/record/1168855 for the
+corresponding licensing information.
