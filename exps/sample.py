@@ -14,7 +14,7 @@ def experiment_definitions():
         bind_nested("task", utils.tldr_task),
         bind("query_dataset_split", "valid"),
         bind("mpi", 1),
-        bind("num_queries", 128),
+        bind("num_queries", 4),
         bind("sample.temperature", 0.01),
     )
 
@@ -23,9 +23,15 @@ def experiment_definitions():
         bind_nested("task", utils.tldr_task),
         bind("query_dataset_split", "valid"),
         bind("mpi", 1),
-        bind("num_queries", 128),
+        bind("num_queries", 8),
         bind("sample.temperature", 0.01),
     )
+
+    # ppo_xl_cpu = combos(
+    #     ppo_xl,
+    #     bind("model_spec.device", "cpu"),
+    #     bind("fp16_activations", False),
+    # )
 
     test = combos(
         bind_nested("task", utils.test_task),

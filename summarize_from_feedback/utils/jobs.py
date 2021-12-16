@@ -32,9 +32,9 @@ def launch(job: Job):
 
         subprocess.check_call(
             [
-                "mpiexec",
-                "-n",
-                str(H.mpi),
+                #"mpiexec",
+                #"-n",
+                #str(H.mpi),
                 "python",
                 "-c",
                 'import sys; import pickle; pickle.loads(open("/tmp/pickle_fn", "rb").read())()',
