@@ -38,7 +38,6 @@ def experiment_definitions():
         bind_nested("task", tldr_task),
         bind("mpi", 1),
         bind_nested("reward_model_spec", reward_model_spec),
-        bind("input_path", "/Users/jeremyscheurer/Code/language_alignment/language_feedback_learning/data/results/tldr_summarization/reformated_results/"),
         bind("fp16_activations", False)
     )
     return locals()
@@ -117,14 +116,14 @@ def prepare_results():
 
 
                     reformated_results_list.append(encode_example(reformated_result))
-                with open("/Users/jeremyscheurer/Code/language_alignment/language_feedback_learning/data/results/tldr_summarization/reformated_results/samples.{}_{}_tldr_results.jsonl".format(model, prompt_type), "w") as outfile:
+                with open(os.path.join(results_folder, "reformated_results/samples.{}_{}_tldr_results.jsonl".format(model, prompt_type)), "w") as outfile:
                     for entry in reformated_results_list:
                         json.dump(entry, outfile)
                         outfile.write('\n')
 
 if __name__ == "__main__":
-     prepare_results()
-     fire.Fire(
+    prepare_results()
+    fire.Fire(
         experiment_def_launcher(
             experiment_dict=experiment_definitions(), main_fn=eval_refinements.main, mode="local"
         )
