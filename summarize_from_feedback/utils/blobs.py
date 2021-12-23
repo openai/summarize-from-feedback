@@ -58,7 +58,7 @@ def download_directory_cached(url):
     """ Given a blob storage path, caches the contents locally.
     WARNING: only use this function if contents under the path won't change!
     """
-    cache_dir = "/tmp/bf-dir-cache"
+    cache_dir = "/home/js12882/data/bf-dir-cache"
     scheme, bucket_or_account, path = parse_url(url)
     local_path = os.path.join(cache_dir, scheme, bucket_or_account, path)
 
@@ -78,5 +78,5 @@ def open_file_cached(path, mode="r"):
     """ Given a GCS path url, caches the contents locally.
     WARNING: only use this function if contents under the path won't change!
     """
-    with bf.BlobFile(path, mode=mode, cache_dir="/tmp/bf-file-cache", streaming=False) as f:
+    with bf.BlobFile(path, mode=mode, cache_dir="/home/js12882/data/bf-file-cache", streaming=False) as f:
         yield f

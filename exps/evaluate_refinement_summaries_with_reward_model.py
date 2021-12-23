@@ -15,7 +15,7 @@ from summarize_from_feedback import tasks
 from summarize_from_feedback.datasets.jsonl_encoding import encode_example
 
 def experiment_definitions():
-    device = "gpu"
+    device = "cuda"
     reward_model_spec = combos(
         bind("device", device),
         bind("load_path", "https://openaipublic.blob.core.windows.net/summarize-from-feedback/models/rm4"),
@@ -131,7 +131,7 @@ def prepare_results():
                         outfile.write('\n')
 
 if __name__ == "__main__":
-    prepare_results()
+    # prepare_results()
     fire.Fire(
         experiment_def_launcher(
             experiment_dict=experiment_definitions(), main_fn=eval_refinements.main, mode="local"
