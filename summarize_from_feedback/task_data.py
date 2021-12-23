@@ -1,10 +1,8 @@
 import json
 import os
 from functools import partial
-from glob import glob
 from typing import Optional
 
-import blobfile as bf
 import torch
 
 import summarize_from_feedback
@@ -100,19 +98,16 @@ def make_jsonl_samples_iter(input_path, layout: Optional[ModelLayout] = None):
     Makes an iterator reading examples out of all the samples.[0-9]*.jsonl files in the given path,
     distributed across replicas according to the layout.
     """
-    if blobs.is_blob_url(input_path):
-        local_input_dir = blobs.download_directory_cached(input_path)
-    else:
-        local_input_dir = input_path
-    input_file_names = glob(os.path.join(local_input_dir, "samples.[0-9]*.jsonl"))
+    local_input_path = input_path
+    assert os.path.isfile(local_input_path)
+    print("Looking for samples in folder {}".format(local_input_path))
 
     def all_examples():
-        for file_name in input_file_names:
-            with bf.BlobFile(file_name, "r") as f:
-                for line in f:
-                    encoded_example = json.loads(line)
-                    example = jsonl_encoding.decode_example(encoded_example)
-                    yield example
+        with open(local_input_path, "r") as f:
+            for line in f:
+                encoded_example = json.loads(line)
+                example = jsonl_encoding.decode_example(encoded_example)
+                yield example
 
     d = all_examples()
     if layout:

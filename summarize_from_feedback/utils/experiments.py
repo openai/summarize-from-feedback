@@ -65,13 +65,13 @@ def get_experiment_jobs(name, launch_fn, trials, hparam_class=None) -> List[jobs
 
 
 def experiment_fn_launcher(experiment_dict, fn):
-    def launcher(exp, name, **extra_args):
+    def launcher(exp, name, input_path, output_folder, **extra_args):
         try:
             trials = experiment_dict[exp]
         except KeyError:
             raise ValueError(f"Couldn't find experiment '{exp}'")
 
-        fn(name, trials, **extra_args)
+        fn(name, trials, input_path, output_folder, **extra_args)
 
     return launcher
 
@@ -90,14 +90,18 @@ def experiment_def_launcher(experiment_dict, main_fn, **default_bindings):
     """
 
     @wraps(main_fn)
-    def fn(name, trials, **extra_args):
+    def fn(name, trials, input_path, output_folder, **extra_args):
         # Bind remaining extra arguments from the defaults and from the command line
         trials = combos(
             *[bind(k, v) for k, v in default_bindings.items()],
             trials,
             *[bind(k, v) for k, v in extra_args.items()],
+            *[bind("input_path", input_path)],
+            *[bind("output_folder", output_folder)]
+
         )
-        exp_jobs = get_experiment_jobs(name, main_fn, trials)
+
+        exp_jobs = get_experiment_jobs(name, main_fn, trials,)
         return jobs.multilaunch(exp_jobs)
 
     return experiment_fn_launcher(experiment_dict, fn)
