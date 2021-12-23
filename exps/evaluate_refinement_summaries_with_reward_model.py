@@ -15,8 +15,9 @@ from summarize_from_feedback import tasks
 from summarize_from_feedback.datasets.jsonl_encoding import encode_example
 
 def experiment_definitions():
+    device = "gpu"
     reward_model_spec = combos(
-        bind("device", "cpu"),
+        bind("device", device),
         bind("load_path", "https://openaipublic.blob.core.windows.net/summarize-from-feedback/models/rm4"),
         bind("short_name", "rm4"),
     )
@@ -34,6 +35,11 @@ def experiment_definitions():
     bind("response.ref_format_str", " {reference}"),  # add a leading space
 )
 
+    reward_model_gpu = combos(
+        bind_nested("task", tldr_task),
+        bind("mpi", 1),
+        bind_nested("reward_model_spec", reward_model_spec),
+    )
     reward_model_cpu = combos(
         bind_nested("task", tldr_task),
         bind("mpi", 1),

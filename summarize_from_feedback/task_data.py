@@ -1,10 +1,8 @@
 import json
 import os
 from functools import partial
-from glob import glob
 from typing import Optional
 
-import blobfile as bf
 import torch
 
 import summarize_from_feedback
@@ -68,7 +66,6 @@ def get_iter_for_task(
     response_encoder = tasks.ResponseEncoder(task_H.response, encoder)
 
     def map_input(raw_data):
-        print(raw_data)
         ref_response = task_H.response.ref_format_str.format(**raw_data)
         ref_tokens = response_encoder.encode_response(ref_response, allow_truncate=True)
         query_info = tasks.process_query(raw_data, encoder=encoder, hparams=task_H.query)
