@@ -26,13 +26,17 @@ json data as the input along with an extra key containing the predicted reward.
 class HParams(hyperparams.HParams):
     reward_model_spec: ModelSpec = field(default_factory=ModelSpec)
     task: TaskHParams = field(default_factory=TaskHParams)
-    input_path: str = None
+    input_path_folder: str = None
+    input_path_index: int = None
     output_folder: str = None
     fp16_activations: bool = True
     output_key: str = "predicted_reward"
 
+all_input_paths = ['samples.curie_summary_feedback_refinement_generate_refinement_tldr_results.jsonl', 'samples.davinci_summary_refinement_summary_tldr_results.jsonl', '.DS_Store', 'samples.ada_summary_refinement_summary_generate_summary_tldr_results.jsonl', 'samples.ada_summary_refinement_summary_generate_refinement_tldr_results.jsonl', 'samples.babbage_summary_feedback_refinement_summary_feedback_tldr_results.jsonl', 'samples.ada_refinement_tldr_results.jsonl', 'samples.davinci_summary_feedback_refinement_generate_refinement_tldr_results.jsonl', 'samples.babbage_summary_feedback_refinement_generate_summary_tldr_results.jsonl', 'samples.curie_summary_refinement_summary_generate_summary_tldr_results.jsonl', 'samples.davinci_summary_refinement_summary_generate_refinement_tldr_results.jsonl', 'samples.babbage_summary_refinement_summary_generate_summary_tldr_results.jsonl', 'samples.babbage_summary_refinement_summary_tldr_results.jsonl', 'samples.ada_summary_feedback_refinement_generate_refinement_tldr_results.jsonl', 'samples.babbage_summary_tldr_results.jsonl', 'samples.davinci_summary_feedback_refinement_summary_feedback_tldr_results.jsonl', 'samples.curie_summary_tldr_results.jsonl', 'samples.babbage_summary_feedback_refinement_generate_refinement_tldr_results.jsonl', 'samples.ada_summary_refinement_summary_tldr_results.jsonl', 'samples.davinci_summary_refinement_summary_generate_summary_tldr_results.jsonl', 'samples.curie_refinement_tldr_results.jsonl', 'samples.ada_summary_feedback_refinement_summary_feedback_tldr_results.jsonl', 'samples.curie_summary_feedback_refinement_generate_summary_tldr_results.jsonl', 'samples.davinci_summary_tldr_results.jsonl', 'samples.curie_summary_feedback_refinement_summary_feedback_tldr_results.jsonl', 'samples.ada_summary_feedback_refinement_generate_summary_tldr_results.jsonl', 'samples.babbage_summary_refinement_summary_generate_refinement_tldr_results.jsonl', 'samples.ada_summary_tldr_results.jsonl', 'samples.babbage_refinement_tldr_results.jsonl', 'samples.curie_summary_refinement_summary_generate_refinement_tldr_results.jsonl', 'samples.curie_summary_refinement_summary_tldr_results.jsonl', 'samples.davinci_refinement_tldr_results.jsonl', 'samples.davinci_summary_feedback_refinement_generate_summary_tldr_results.jsonl']
+
 
 def main(H: HParams):
+    H.input_path = os.path.join(H.input_path_folder, all_input_paths[H.input_path_index])
     assert os.path.isfile(H.input_path), H.input_path
     layout = H.reward_model_spec.run_params.all_gpu_layout()
 
