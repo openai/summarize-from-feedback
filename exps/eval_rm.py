@@ -9,18 +9,22 @@ from summarize_from_feedback.utils.experiments import experiment_def_launcher
 
 
 def experiment_definitions():
+    reward_model_spec = combos(
+        bind("device", "cpu"),
+        bind("load_path", "https://openaipublic.blob.core.windows.net/summarize-from-feedback/models/rm4"),
+        bind("short_name", "rm4"),
+    )
     rm4 = combos(
         bind_nested("task", utils.tldr_task),
         bind("mpi", 1),
-        bind_nested("reward_model_spec", utils.rm4()),
+        bind_nested("reward_model_spec", reward_model_spec),
         bind("input_path", "https://openaipublic.blob.core.windows.net/summarize-from-feedback/samples/sup4_ppo_rm4"),
     )
 
-    # rm4_cpu =combos(
-    #     rm4,
-    #     bind_nested("reward_model_spec", utils.stub_model_spec()),
-    #     bind("fp16_activations", False),
-    # )
+    rm4_cpu =combos(
+        rm4,
+        bind("fp16_activations", False),
+    )
     test = combos(
         bind_nested("task", utils.test_task),
         bind_nested("reward_model_spec", utils.random_teeny_model_spec()),

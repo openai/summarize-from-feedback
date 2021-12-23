@@ -27,11 +27,11 @@ def experiment_definitions():
         bind("sample.temperature", 0.01),
     )
 
-    # ppo_xl_cpu = combos(
-    #     ppo_xl,
-    #     bind("model_spec.device", "cpu"),
-    #     bind("fp16_activations", False),
-    # )
+    ppo_xl_cpu = combos(
+        ppo_xl,
+        bind("model_spec.device", "cpu"),
+        bind("fp16_activations", False),
+    )
 
     test = combos(
         bind_nested("task", utils.test_task),
