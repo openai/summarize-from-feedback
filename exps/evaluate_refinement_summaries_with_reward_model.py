@@ -50,7 +50,7 @@ def experiment_definitions():
 
 
 def prepare_results():
-    results_folder = "/Users/jeremyscheurer/Code/language_alignment/language_feedback_learning/data/results/tldr_summarization"
+    results_folder = "/home/js12882/data/tldr_results"
     prompt_types = ["summary", "refinement", "summary_feedback", "summary_refinement_summary", "summary_refinement_summary_generate_summary", "summary_refinement_summary_generate_refinement", "summary_feedback_summary_feedback", "summary_feedback_refinement_summary_feedback", "summary_feedback_refinement_generate_summary", "summary_feedback_refinement_generate_refinement"]
     models = ["ada", "babbage", "curie", "davinci"]
     context_format = "SUBREDDIT: r/{subreddit}\n\nTITLE: {title}\n\nPOST: {post}\n\nTL;DR:"
@@ -122,7 +122,10 @@ def prepare_results():
 
 
                     reformated_results_list.append(encode_example(reformated_result))
-                with open(os.path.join(results_folder, "reformated_results/samples.{}_{}_tldr_results.jsonl".format(model, prompt_type)), "w") as outfile:
+                    reformated_results_path = os.path.join(results_folder, "reformated_results")
+                    if not os.path.isdir(reformated_results_path):
+                        os.mkdir(reformated_results_path)
+                with open(os.path.join(reformated_results_path,"samples.{}_{}_tldr_results.jsonl".format(model, prompt_type)), "w") as outfile:
                     for entry in reformated_results_list:
                         json.dump(entry, outfile)
                         outfile.write('\n')

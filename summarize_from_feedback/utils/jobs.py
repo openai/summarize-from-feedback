@@ -29,7 +29,6 @@ def launch(job: Job):
 
         env = os.environ.copy()
         env["JOB_NAME"] = H.name
-
         subprocess.check_call(
             [
                 "mpiexec",
