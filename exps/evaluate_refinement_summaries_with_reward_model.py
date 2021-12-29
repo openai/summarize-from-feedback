@@ -51,7 +51,7 @@ def experiment_definitions():
 
 def prepare_results():
     results_folder = "/home/js12882/data/tldr_results"
-    prompt_types = ["summary", "refinement", "summary_feedback", "summary_refinement_summary", "summary_refinement_summary_generate_summary", "summary_refinement_summary_generate_refinement", "summary_feedback_summary_feedback", "summary_feedback_refinement_summary_feedback", "summary_feedback_refinement_generate_summary", "summary_feedback_refinement_generate_refinement"]
+    prompt_types = ["summary_feedback_refinement_summary_feedback", "summary_feedback_refinement_generate_summary", "summary_feedback_refinement_generate_refinement", "summary_refinement_summary","summary_refinement_summary_generate_summary","summary_refinement_summary_generate_refinement", "refinement", "summary"]
     models = ["ada", "babbage", "curie", "davinci"]
     context_format = "SUBREDDIT: r/{subreddit}\n\nTITLE: {title}\n\nPOST: {post}\n\nTL;DR:"
     number_of_generated_samples = 5
