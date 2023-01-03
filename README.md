@@ -126,9 +126,4 @@ https://openaipublic.blob.core.windows.net/summarize-from-feedback/datasets/tldr
 https://openaipublic.blob.core.windows.net/summarize-from-feedback/datasets/tldr_3_filtered/test.jsonl
 https://openaipublic.blob.core.windows.net/summarize-from-feedback/datasets/tldr_3_filtered/samples.txt
 
-https://openaipublic.blob.core.windows.net/summarize-from-feedback/datasets/tldr_3_filtered_queries/train.jsonl
-https://openaipublic.blob.core.windows.net/summarize-from-feedback/datasets/tldr_3_filtered_queries/valid.jsonl
-https://openaipublic.blob.core.windows.net/summarize-from-feedback/datasets/tldr_3_filtered_queries/test.jsonl
-https://openaipublic.blob.core.windows.net/summarize-from-feedback/datasets/tldr_3_filtered_queries/samples.txt
-
 For details on the original TL;DR dataset, see [Syed et al 2018](https://zenodo.org/record/1168855) by Syed, Shahbaz, Voelske, Michael, Potthast, Martin, & Stein, Benno (2018). It is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/legalcode).
